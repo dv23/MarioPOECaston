@@ -12,7 +12,6 @@
 // body
 //$("#contenu").fadeOut("slow").fadeIn(5000);
 $(function(){
-
   jQuery(document).ready(function(){
   console.log("jQuery est prêt !");
 });
@@ -26,9 +25,23 @@ $(function(){
     $("#mario").removeClass();
     $("#mario").addClass(param1);
                                  };
-// deplacement
+// deplacement du fond
+     function deplaceFondMarioBros()
+    {
+          $('.fond').animate({
+          left: '-=360'
+        },
+        1000,
+        'linear',
+        function(){
+          $('.fond').css('top',0);
+          deplaceFondMarioBros();
+          //$('#son')[0].play();
+        });
+    };
+//deplacement de Mario
  	var ok = 1;
-    function deplace()
+    function deplaceSuperMario()
     {
         $('#mario').animate({top: '-=600'}, 2500, 'linear', function(){
           var mario2X = Math.floor(Math.random()*194)+70;
@@ -36,20 +49,9 @@ $(function(){
           $('#mario').css('top',mario2Y);
           $('#mario').css('left',mario2X);
           ok = 1;
-                                                                    });
+         alert ("deplaceSuperMario");                                                           });
     };
-    //var keys = {};
 $(document).keydown(function(touche){
-        var appui = touche.which || touche.keyCode;
-        if (appui == 39 && appui == 38) {
-        /*  keys[e.which] = true;
-          up='38' in keys;
-          up='39' in keys;
-          if (up && right){*/
-           alert("touches haut et droite enfoncees");
-                       /*   $(document).keyup(function (e) {
-        delete keys[e.which];*/
-                                         };
         // Touche Droite
         if (touche.which == 39)
         {
@@ -59,13 +61,42 @@ $(document).keydown(function(touche){
                             $('#mario').css('left', marioX+30);
                           }
         }
+         // Touche Gauche
         if (touche.which == 37)
         {
           marioX = parseInt($('#mario').css('left'));
           if (marioX > 70)
             $('#mario').css('left', marioX-30);
         }
+          // Touche Haut, Saute Haut Mario
+        if (touche.which == 38)
+        { $('#mario').animate({top: '-=100'}, 1500, 'linear', 
+          function(){
+          //var vrX = Math.floor(Math.random()*194)+70;
+          var vrY = 100;
+          $('#mario').css('top',vrY);
+          //marioY = parseInt($('#mario').css('top'));
+          //if (marioY > 70)
+          //  $('#mario').css('top', marioY+30);
+                  })
+        }
+        // Touche Bas, Saute en bas Mario
+        if (touche.which == 40)
+        {/*
+          marioY = parseInt($('#mario').css('bottom'));
+          //if (marioX > 70)
+            $('#mario').css('bottom', marioY+30);*/
+          $('#mario').animate({top: '+=100'}, 2500, 'linear', 
+          function(){
+          var vrX = Math.floor(Math.random()*194)+70;
+          var vrY = 400;
+          $('#mario').css('top',vrY);
+          //alert("mario bas");
+          //$('#mario').css('left',vrX);
+                    })
+        }
                                     });
-//deplace();
+//deplaceSuperMario();
 //terminerAnim();
+deplaceFondMarioBros();
 });

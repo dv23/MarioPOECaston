@@ -1,7 +1,7 @@
 
 <html>
 	<head>
-	//<script src="js/jquery.js"></script>
+	<script src="js/jquery.js"></script>
 	<!--script src="js/jqstyle.js"></script>-->
 	<script src="js/jqstyle.js"></script>
   <title>Super MARIO !!!!</title>
@@ -16,53 +16,15 @@
 </div>
  <audio preload="auto" id="son"><source src="DrivingMyCar.mp3" type="audio/mp3"><source src="jazz.ogg" type="audio/ogg"></audio>
 <script type="text/javascript">
-    // deplacement du fond
-     function deplace()
-    {
-          $('.fond').animate({
-        	left: '-=360'
-        },
-        1000,
-        'linear',
-        function(){
-          $('.fond').css('top',0);
-          deplace();
-          //$('#son')[0].play();
-        });
-    };
+    
 
 //Deplacement de Mario
  $(document).keydown(function(touch){
-          // touche Haut, Saute Haut Mario
-        if (touch.which == 38)
-        { $('#mario').animate({top: '-=100'}, 1500, 'linear', 
-          function(){
-          //var vrX = Math.floor(Math.random()*194)+70;
-          var vrY = 100;
-          $('#mario').css('top',vrY);
-          //marioY = parseInt($('#mario').css('top'));
-          //if (marioY > 70)
-          //  $('#mario').css('top', marioY+30);
-                  })
-        }
- 		// touche Bas, Saute en bas Mario
-        if (touch.which == 40)
-        {/*
-          marioY = parseInt($('#mario').css('bottom'));
-          //if (marioX > 70)
-            $('#mario').css('bottom', marioY+30);*/
-             $('#mario').animate({top: '+=100'}, 2500, 'linear', 
-          function(){
-          var vrX = Math.floor(Math.random()*194)+70;
-          var vrY = 400;
-          $('#mario').css('top',vrY);
-          //alert("mario bas");
-          //$('#mario').css('left',vrX);
-                    })
-           }
+        
+ 		
         //$('#son')[0].play();
       });
-deplace();
+
 </script>
 
 </body>

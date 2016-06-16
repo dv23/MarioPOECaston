@@ -40,17 +40,7 @@ $(function(){
         });
     };
 //deplacement de Mario
- 	var ok = 1;
-    function deplaceSuperMario()
-    {
-        $('#mario').animate({top: '-=600'}, 2500, 'linear', function(){
-          var mario2X = Math.floor(Math.random()*194)+70;
-          var mario2Y = 400;
-          $('#mario').css('top',mario2Y);
-          $('#mario').css('left',mario2X);
-          ok = 1;
-         alert ("deplaceSuperMario");                                                           });
-    };
+
 $(document).keydown(function(touche){
         // Touche Droite
         if (touche.which == 39)
@@ -72,9 +62,9 @@ $(document).keydown(function(touche){
         if (touche.which == 38)
         { $('#mario').animate({top: '-=100'}, 1500, 'linear', 
           function(){
-          //var vrX = Math.floor(Math.random()*194)+70;
-          var vrY = 100;
-          $('#mario').css('top',vrY);
+          // Abscisse sera deplacee en haut;
+          var marioY = 100;
+          $('#mario').css('top',marioY);
           //marioY = parseInt($('#mario').css('top'));
           //if (marioY > 70)
           //  $('#mario').css('top', marioY+30);
@@ -84,15 +74,16 @@ $(document).keydown(function(touche){
         if (touche.which == 40)
         {/*
           marioY = parseInt($('#mario').css('bottom'));
-          //if (marioX > 70)
+          //déplace linéairement Mario vers le haut de 100 pixels en 2500 millisecondes
             $('#mario').css('bottom', marioY+30);*/
           $('#mario').animate({top: '+=100'}, 2500, 'linear', 
           function(){
-          var vrX = Math.floor(Math.random()*194)+70;
-          var vrY = 400;
-          $('#mario').css('top',vrY);
+          //Abscisse Mario si affichee 1 fois
+          var vrMarioX = Math.floor(Math.random()*194)+70;
+          var vrMarioY = 400;
+          $('#mario').css('top',vrMarioY);
           //alert("mario bas");
-          //$('#mario').css('left',vrX);
+          //depalce suite appui touche;
                     })
         }
                                     });
